@@ -778,6 +778,87 @@
             transform: translateY(-3px);
         }
         
+        /* 电话提示框样式 */
+        .phone-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: modalIn 0.5s ease;
+        }
+        
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .phone-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 10px;
+            display: inline-block;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            background: var(--light-gray);
+            color: var(--dark);
+        }
+        
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -808,6 +889,10 @@
             
             .comparison-content {
                 flex-direction: column;
+            }
+            
+            .phone-number {
+                font-size: 1.8rem;
             }
         }
         
@@ -850,10 +935,29 @@
             .step {
                 width: 100%;
             }
+            
+            .phone-number {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- 电话提示模态框 -->
+    <div class="phone-modal" id="phoneModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <h3 data-key="modal.title">联系销售代表</h3>
+            <p data-key="modal.subtitle">我们的销售代表将为您提供专业咨询和定制解决方案</p>
+            <div class="phone-number">13661506899</div>
+            <p data-key="modal.workingHours">工作时间：周一至周五 9:00-18:00</p>
+            <div class="modal-buttons">
+                <a href="tel:13661506899" class="btn" data-key="modal.call">立即拨打</a>
+                <button class="btn btn-outline" id="copyNumber" data-key="modal.copy">复制号码</button>
+            </div>
+        </div>
+    </div>
+    
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -943,7 +1047,7 @@
             <h1 data-key="hero.title">新一代AI智能评分引擎</h1>
             <p data-key="hero.subtitle">基于机器学习与NLP技术，提供超越人工的精准评分解决方案</p>
             <div class="hero-buttons">
-                <a href="#cta" class="btn" data-key="hero.try">立即体验</a>
+                <a href="https://jsj.top/f/QwohoR" class="btn" data-key="hero.try">立即体验</a>
                 <a href="#cases" class="btn btn-outline" data-key="hero.cases">应用场景</a>
             </div>
         </div>
@@ -996,7 +1100,7 @@
                 <h2 data-key="comparison.title">AI评分 vs 人工评分</h2>
                 <p data-key="comparison.subtitle">基于为知名上市公司近2万名销售，3万次评分的数据验证</p>
                 <p data-key="comparison.desc">SmartScore在各个方面都显著优于传统人工评分方式，为企业带来真正的价值提升。</p>
-                <a href="#cta" class="btn" style="margin-top: 30px;" data-key="comparison.cta">查看案例</a>
+                <a href="#cases" class="btn" style="margin-top: 30px;" data-key="comparison.cta">查看案例</a>
             </div>
             <div class="comparison-table">
                 <table>
@@ -1144,9 +1248,9 @@
             <h2 data-key="cta.title">开启智能评分新时代</h2>
             <p data-key="cta.subtitle">立即体验SmartScore，让AI智能评分引擎为您的企业带来效率革命</p>
             <div class="cta-buttons">
-                <a href="#" class="btn btn-light" data-key="cta.trial">免费试用</a>
-                <a href="#" class="btn" data-key="cta.demo">预约演示</a>
-                <a href="#" class="btn btn-outline" data-key="cta.contact">联系销售</a>
+                <a href="https://jsj.top/f/QwohoR" class="btn btn-light" data-key="cta.trial">免费试用</a>
+                <a href="https://jsj.top/f/QwohoR" class="btn" data-key="cta.demo">预约演示</a>
+                <a href="#" class="btn btn-outline js-contact-sales" data-key="cta.contact">联系销售</a>
             </div>
         </div>
     </section>
@@ -1196,7 +1300,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 SmartScore AI智能评分引擎. <span data-key="footer.rights">保留所有权利</span>。</p>
+                <p>&copy; 2025 SmartScore AI智能评分引擎. <span data-key="footer.rights">保留所有权利</span>。</p>
             </div>
         </div>
     </footer>
@@ -1355,7 +1459,14 @@
                 "footer.contact": "联系我们",
                 "footer.address": "上海市淮海中路300号",
                 "footer.hours": "周一至周五 9:00-18:00",
-                "footer.rights": "保留所有权利"
+                "footer.rights": "保留所有权利",
+                
+                // 电话模态框
+                "modal.title": "联系销售代表",
+                "modal.subtitle": "我们的销售代表将为您提供专业咨询和定制解决方案",
+                "modal.workingHours": "工作时间：周一至周五 9:00-18:00",
+                "modal.call": "立即拨打",
+                "modal.copy": "复制号码"
             },
             en: {
                 // 导航
@@ -1480,7 +1591,14 @@
                 "footer.contact": "Contact Us",
                 "footer.address": "No.300, huaihai middle road, shanghai",
                 "footer.hours": "Mon-Fri 9:00-18:00",
-                "footer.rights": "All rights reserved"
+                "footer.rights": "All rights reserved",
+                
+                // 电话模态框
+                "modal.title": "Contact Sales Representative",
+                "modal.subtitle": "Our sales representatives will provide professional consultation and customized solutions",
+                "modal.workingHours": "Working Hours: Mon-Fri 9:00-18:00",
+                "modal.call": "Call Now",
+                "modal.copy": "Copy Number"
             }
         };
 
@@ -1546,6 +1664,44 @@
             }
         });
 
+        // 电话模态框功能
+        const phoneModal = document.getElementById('phoneModal');
+        const closeModal = document.getElementById('closeModal');
+        const copyNumber = document.getElementById('copyNumber');
+        
+        // 显示电话模态框
+        document.querySelectorAll('.js-contact-sales').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                phoneModal.style.display = 'flex';
+            });
+        });
+        
+        // 关闭模态框
+        closeModal.addEventListener('click', function() {
+            phoneModal.style.display = 'none';
+        });
+        
+        // 点击模态框外部关闭
+        window.addEventListener('click', function(e) {
+            if (e.target === phoneModal) {
+                phoneModal.style.display = 'none';
+            }
+        });
+        
+        // 复制电话号码
+        copyNumber.addEventListener('click', function() {
+            navigator.clipboard.writeText('13661506899');
+            
+            // 显示复制成功提示
+            const originalText = this.textContent;
+            this.textContent = currentLang === 'zh' ? '已复制!' : 'Copied!';
+            
+            setTimeout(() => {
+                this.textContent = originalText;
+            }, 2000);
+        });
+
         // 页面加载时初始化
         document.addEventListener('DOMContentLoaded', function() {
             // 创建动态粒子
@@ -1567,6 +1723,11 @@
                         el.style.transform = 'translateY(0)';
                     }, 100);
                 }, index * 100);
+            });
+            
+            // 更新所有免费试用和预约演示按钮的链接
+            document.querySelectorAll('a[data-key="cta.trial"], a[data-key="cta.demo"], a[data-key="hero.try"]').forEach(link => {
+                link.href = 'https://jsj.top/f/QwohoR';
             });
         });
     </script>
