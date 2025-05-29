@@ -168,16 +168,65 @@
             background: rgba(255, 255, 255, 0.1);
         }
         
-        /* Hero Section */
+        /* Hero Section - 恢复动态粒子背景 */
         .hero {
             position: relative;
             color: white;
             padding: 140px 0 100px;
             text-align: center;
             overflow: hidden;
-            background: linear-gradient(135deg, rgba(26, 42, 79, 0.9), rgba(13, 27, 51, 0.9)), url('https://images.unsplash.com/photo-1677442135133-33d364e7d1e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, #1a2a4f, #0d1b33);
+        }
+
+        /* 神经网络背景 */
+        .neural-network {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        .neural-path {
+            stroke: var(--primary);
+            stroke-width: 1;
+            fill: none;
+            opacity: 0.15;
+        }
+
+        .neural-node {
+            fill: var(--secondary);
+            stroke: var(--accent);
+            stroke-width: 1;
+            opacity: 0.3;
+        }
+
+        /* 动态粒子效果 */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary), transparent);
+            opacity: 0.7;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); opacity: 0.2; }
+            25% { transform: translateY(-25vh) translateX(10vw); }
+            50% { transform: translateY(10vh) translateX(-15vw); opacity: 0.7; }
+            75% { transform: translateY(-15vh) translateX(20vw); }
+            100% { transform: translateY(0) translateX(0); opacity: 0.2; }
         }
         
         .hero-content {
@@ -831,8 +880,65 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - 恢复动态背景 -->
     <section class="hero">
+        <!-- 神经网络背景 -->
+        <svg class="neural-network" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+            <!-- 神经网络路径 -->
+            <path class="neural-path" d="M100,100 C200,50 300,150 400,100 C500,50 600,150 700,100 C800,50 900,150 900,200" />
+            <path class="neural-path" d="M100,200 C200,250 300,100 400,200 C500,250 600,100 700,200 C800,250 900,100 900,300" />
+            <path class="neural-path" d="M100,300 C200,350 300,250 400,300 C500,350 600,250 700,300 C800,350 900,250 900,400" />
+            <path class="neural-path" d="M100,400 C200,450 300,350 400,400 C500,450 600,350 700,400 C800,450 900,350 900,500" />
+            
+            <!-- 神经网络节点 -->
+            <circle class="neural-node" cx="100" cy="100" r="5" />
+            <circle class="neural-node" cx="200" cy="50" r="5" />
+            <circle class="neural-node" cx="300" cy="150" r="5" />
+            <circle class="neural-node" cx="400" cy="100" r="5" />
+            <circle class="neural-node" cx="500" cy="50" r="5" />
+            <circle class="neural-node" cx="600" cy="150" r="5" />
+            <circle class="neural-node" cx="700" cy="100" r="5" />
+            <circle class="neural-node" cx="800" cy="50" r="5" />
+            <circle class="neural-node" cx="900" cy="150" r="5" />
+            <circle class="neural-node" cx="900" cy="200" r="5" />
+            
+            <circle class="neural-node" cx="100" cy="200" r="5" />
+            <circle class="neural-node" cx="200" cy="250" r="5" />
+            <circle class="neural-node" cx="300" cy="100" r="5" />
+            <circle class="neural-node" cx="400" cy="200" r="5" />
+            <circle class="neural-node" cx="500" cy="250" r="5" />
+            <circle class="neural-node" cx="600" cy="100" r="5" />
+            <circle class="neural-node" cx="700" cy="200" r="5" />
+            <circle class="neural-node" cx="800" cy="250" r="5" />
+            <circle class="neural-node" cx="900" cy="100" r="5" />
+            <circle class="neural-node" cx="900" cy="300" r="5" />
+            
+            <circle class="neural-node" cx="100" cy="300" r="5" />
+            <circle class="neural-node" cx="200" cy="350" r="5" />
+            <circle class="neural-node" cx="300" cy="250" r="5" />
+            <circle class="neural-node" cx="400" cy="300" r="5" />
+            <circle class="neural-node" cx="500" cy="350" r="5" />
+            <circle class="neural-node" cx="600" cy="250" r="5" />
+            <circle class="neural-node" cx="700" cy="300" r="5" />
+            <circle class="neural-node" cx="800" cy="350" r="5" />
+            <circle class="neural-node" cx="900" cy="250" r="5" />
+            <circle class="neural-node" cx="900" cy="400" r="5" />
+            
+            <circle class="neural-node" cx="100" cy="400" r="5" />
+            <circle class="neural-node" cx="200" cy="450" r="5" />
+            <circle class="neural-node" cx="300" cy="350" r="5" />
+            <circle class="neural-node" cx="400" cy="400" r="5" />
+            <circle class="neural-node" cx="500" cy="450" r="5" />
+            <circle class="neural-node" cx="600" cy="350" r="5" />
+            <circle class="neural-node" cx="700" cy="400" r="5" />
+            <circle class="neural-node" cx="800" cy="450" r="5" />
+            <circle class="neural-node" cx="900" cy="350" r="5" />
+            <circle class="neural-node" cx="900" cy="500" r="5" />
+        </svg>
+        
+        <!-- 动态粒子容器 -->
+        <div class="particles" id="particles"></div>
+        
         <div class="container hero-content">
             <h1 data-key="hero.title">新一代AI智能评分引擎</h1>
             <p data-key="hero.subtitle">基于机器学习与NLP技术，提供超越人工的精准评分解决方案</p>
@@ -1082,9 +1188,9 @@
                 <div class="footer-column">
                     <h3 data-key="footer.contact">联系我们</h3>
                     <ul class="contact-info">
-                        <li><i class="fas fa-phone"></i> <span>400-888-8888</span></li>
-                        <li><i class="fas fa-envelope"></i> <span>contact@smartscore.com</span></li>
-                        <li><i class="fas fa-map-marker-alt"></i> <span data-key="footer.address">北京市海淀区科技园区88号</span></li>
+                        <li><i class="fas fa-phone"></i> <span>136-615-06899</span></li>
+                        <li><i class="fas fa-envelope"></i> <span>yiheng1900@gmail.com</span></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span data-key="footer.address">上海市淮海中路300号</span></li>
                         <li><i class="fas fa-clock"></i> <span data-key="footer.hours">周一至周五 9:00-18:00</span></li>
                     </ul>
                 </div>
@@ -1096,6 +1202,34 @@
     </footer>
 
     <script>
+        // 创建动态粒子效果
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // 随机粒子大小
+                const size = Math.random() * 120 + 20;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // 随机位置
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                
+                // 随机动画延迟
+                const delay = Math.random() * 15;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
         // 翻译字典
         const translations = {
             zh: {
@@ -1219,7 +1353,7 @@
                 "footer.scenario4": "面试评估",
                 "footer.scenario5": "教育培训评估",
                 "footer.contact": "联系我们",
-                "footer.address": "北京市海淀区科技园区88号",
+                "footer.address": "上海市淮海中路300号",
                 "footer.hours": "周一至周五 9:00-18:00",
                 "footer.rights": "保留所有权利"
             },
@@ -1344,7 +1478,7 @@
                 "footer.scenario4": "Interview Evaluation",
                 "footer.scenario5": "Education & Training Evaluation",
                 "footer.contact": "Contact Us",
-                "footer.address": "No.88, Tech Park, Haidian District, Beijing",
+                "footer.address": "No.300, huaihai middle road, shanghai",
                 "footer.hours": "Mon-Fri 9:00-18:00",
                 "footer.rights": "All rights reserved"
             }
@@ -1412,8 +1546,15 @@
             }
         });
 
-        // 页面加载动画
+        // 页面加载时初始化
         document.addEventListener('DOMContentLoaded', function() {
+            // 创建动态粒子
+            createParticles();
+            
+            // 初始化语言
+            switchLanguage('zh');
+            
+            // 卡片加载动画
             const elements = document.querySelectorAll('.feature-card, .step, .case-card');
             elements.forEach((el, index) => {
                 setTimeout(() => {
@@ -1427,9 +1568,6 @@
                     }, 100);
                 }, index * 100);
             });
-            
-            // 初始化英文翻译
-            switchLanguage('zh');
         });
     </script>
 </body>
