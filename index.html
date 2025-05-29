@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartScore - 新一代AI智能评分引擎</title>
+    <title>SmartScore - AI智能评分引擎 | AI Scoring Engine</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -31,6 +31,7 @@
             background: linear-gradient(135deg, #fff8f5, #fff0eb);
             line-height: 1.6;
             overflow-x: hidden;
+            transition: all 0.3s ease;
         }
         
         .container {
@@ -74,10 +75,11 @@
         nav ul {
             display: flex;
             list-style: none;
+            align-items: center;
         }
         
         nav ul li {
-            margin-left: 30px;
+            margin-left: 25px;
         }
         
         nav ul li a {
@@ -93,6 +95,29 @@
         nav ul li a:hover {
             color: var(--primary);
             background-color: rgba(255, 107, 53, 0.1);
+        }
+        
+        .language-switcher {
+            display: flex;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 30px;
+            padding: 5px;
+            margin-left: 20px;
+        }
+        
+        .language-btn {
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            background: transparent;
+        }
+        
+        .language-btn.active {
+            background: var(--primary);
+            color: white;
         }
         
         .btn {
@@ -143,65 +168,16 @@
             background: rgba(255, 255, 255, 0.1);
         }
         
-        /* Hero Section - 更新背景为动态粒子效果 */
+        /* Hero Section */
         .hero {
             position: relative;
             color: white;
             padding: 140px 0 100px;
             text-align: center;
             overflow: hidden;
-            background: linear-gradient(135deg, #1a2a4f, #0d1b33);
-        }
-
-        /* 神经网络背景 */
-        .neural-network {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.7;
-            z-index: 1;
-        }
-
-        .neural-path {
-            stroke: var(--primary);
-            stroke-width: 1;
-            fill: none;
-            opacity: 0.15;
-        }
-
-        .neural-node {
-            fill: var(--secondary);
-            stroke: var(--accent);
-            stroke-width: 1;
-            opacity: 0.3;
-        }
-
-        /* 动态粒子效果 */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-        }
-
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--primary), transparent);
-            opacity: 0.7;
-            animation: float 15s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) translateX(0); opacity: 0.2; }
-            25% { transform: translateY(-25vh) translateX(10vw); }
-            50% { transform: translateY(10vh) translateX(-15vw); opacity: 0.7; }
-            75% { transform: translateY(-15vh) translateX(20vw); }
-            100% { transform: translateY(0) translateX(0); opacity: 0.2; }
+            background: linear-gradient(135deg, rgba(26, 42, 79, 0.9), rgba(13, 27, 51, 0.9)), url('https://images.unsplash.com/photo-1677442135133-33d364e7d1e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
         }
         
         .hero-content {
@@ -787,8 +763,22 @@
         }
         
         @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav {
+                margin-top: 20px;
+                width: 100%;
+            }
+            
             nav ul {
-                display: none;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
             }
             
             .hero h1 {
@@ -824,82 +814,31 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#features">核心优势</a></li>
-                    <li><a href="#comparison">AI vs 人工</a></li>
-                    <li><a href="#process">工作流程</a></li>
-                    <li><a href="#cases">应用场景</a></li>
-                    <li><a href="#contact">联系我们</a></li>
+                    <li><a href="#features" data-key="nav.features">核心优势</a></li>
+                    <li><a href="#comparison" data-key="nav.comparison">AI vs 人工</a></li>
+                    <li><a href="#process" data-key="nav.process">工作流程</a></li>
+                    <li><a href="#cases" data-key="nav.cases">应用场景</a></li>
+                    <li><a href="#contact" data-key="nav.contact">联系我们</a></li>
+                    <li>
+                        <div class="language-switcher">
+                            <button class="language-btn active" data-lang="zh">简体中文</button>
+                            <button class="language-btn" data-lang="en">English</button>
+                        </div>
+                    </li>
                 </ul>
             </nav>
-            <a href="#cta" class="btn">免费试用</a>
+            <a href="#cta" class="btn" data-key="nav.trial">免费试用</a>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <!-- 神经网络背景 -->
-        <svg class="neural-network" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
-            <!-- 神经网络路径 -->
-            <path class="neural-path" d="M100,100 C200,50 300,150 400,100 C500,50 600,150 700,100 C800,50 900,150 900,200" />
-            <path class="neural-path" d="M100,200 C200,250 300,100 400,200 C500,250 600,100 700,200 C800,250 900,100 900,300" />
-            <path class="neural-path" d="M100,300 C200,350 300,250 400,300 C500,350 600,250 700,300 C800,350 900,250 900,400" />
-            <path class="neural-path" d="M100,400 C200,450 300,350 400,400 C500,450 600,350 700,400 C800,450 900,350 900,500" />
-            
-            <!-- 神经网络节点 -->
-            <circle class="neural-node" cx="100" cy="100" r="5" />
-            <circle class="neural-node" cx="200" cy="50" r="5" />
-            <circle class="neural-node" cx="300" cy="150" r="5" />
-            <circle class="neural-node" cx="400" cy="100" r="5" />
-            <circle class="neural-node" cx="500" cy="50" r="5" />
-            <circle class="neural-node" cx="600" cy="150" r="5" />
-            <circle class="neural-node" cx="700" cy="100" r="5" />
-            <circle class="neural-node" cx="800" cy="50" r="5" />
-            <circle class="neural-node" cx="900" cy="150" r="5" />
-            <circle class="neural-node" cx="900" cy="200" r="5" />
-            
-            <circle class="neural-node" cx="100" cy="200" r="5" />
-            <circle class="neural-node" cx="200" cy="250" r="5" />
-            <circle class="neural-node" cx="300" cy="100" r="5" />
-            <circle class="neural-node" cx="400" cy="200" r="5" />
-            <circle class="neural-node" cx="500" cy="250" r="5" />
-            <circle class="neural-node" cx="600" cy="100" r="5" />
-            <circle class="neural-node" cx="700" cy="200" r="5" />
-            <circle class="neural-node" cx="800" cy="250" r="5" />
-            <circle class="neural-node" cx="900" cy="100" r="5" />
-            <circle class="neural-node" cx="900" cy="300" r="5" />
-            
-            <circle class="neural-node" cx="100" cy="300" r="5" />
-            <circle class="neural-node" cx="200" cy="350" r="5" />
-            <circle class="neural-node" cx="300" cy="250" r="5" />
-            <circle class="neural-node" cx="400" cy="300" r="5" />
-            <circle class="neural-node" cx="500" cy="350" r="5" />
-            <circle class="neural-node" cx="600" cy="250" r="5" />
-            <circle class="neural-node" cx="700" cy="300" r="5" />
-            <circle class="neural-node" cx="800" cy="350" r="5" />
-            <circle class="neural-node" cx="900" cy="250" r="5" />
-            <circle class="neural-node" cx="900" cy="400" r="5" />
-            
-            <circle class="neural-node" cx="100" cy="400" r="5" />
-            <circle class="neural-node" cx="200" cy="450" r="5" />
-            <circle class="neural-node" cx="300" cy="350" r="5" />
-            <circle class="neural-node" cx="400" cy="400" r="5" />
-            <circle class="neural-node" cx="500" cy="450" r="5" />
-            <circle class="neural-node" cx="600" cy="350" r="5" />
-            <circle class="neural-node" cx="700" cy="400" r="5" />
-            <circle class="neural-node" cx="800" cy="450" r="5" />
-            <circle class="neural-node" cx="900" cy="350" r="5" />
-            <circle class="neural-node" cx="900" cy="500" r="5" />
-        </svg>
-        
-        <!-- 动态粒子容器 -->
-        <div class="particles" id="particles"></div>
-        
         <div class="container hero-content">
-            <h1>新一代AI智能评分引擎</h1>
-            <p>基于机器学习与NLP技术，提供超越人工的精准评分解决方案</p>
+            <h1 data-key="hero.title">新一代AI智能评分引擎</h1>
+            <p data-key="hero.subtitle">基于机器学习与NLP技术，提供超越人工的精准评分解决方案</p>
             <div class="hero-buttons">
-                <a href="#cta" class="btn">立即体验</a>
-                <a href="#cases" class="btn btn-outline">应用场景</a>
+                <a href="#cta" class="btn" data-key="hero.try">立即体验</a>
+                <a href="#cases" class="btn btn-outline" data-key="hero.cases">应用场景</a>
             </div>
         </div>
     </section>
@@ -908,37 +847,37 @@
     <section id="features" class="features">
         <div class="container">
             <div class="section-title">
-                <h2>为什么选择 SmartScore?</h2>
-                <p>基于AI和机器学习技术，提供超越人工的评分解决方案</p>
+                <h2 data-key="features.title">为什么选择 SmartScore?</h2>
+                <p data-key="features.subtitle">基于AI和机器学习技术，提供超越人工的评分解决方案</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <h3>高效省时</h3>
-                    <p>24小时不间断服务，处理速度是人工的100倍以上，大幅提升工作效率</p>
+                    <h3 data-key="features.efficiency">高效省时</h3>
+                    <p data-key="features.efficiencyDesc">24小时不间断服务，处理速度是人工的100倍以上，大幅提升工作效率</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-bullseye"></i>
                     </div>
-                    <h3>精准一致</h3>
-                    <p>采用机器学习与NLP技术，消除人为偏差，评分准确度提升30%</p>
+                    <h3 data-key="features.accuracy">精准一致</h3>
+                    <p data-key="features.accuracyDesc">采用机器学习与NLP技术，消除人为偏差，评分准确度提升30%</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-piggy-bank"></i>
                     </div>
-                    <h3>降低成本</h3>
-                    <p>相比人工评分，成本下降95%，实现真正的降本增效</p>
+                    <h3 data-key="features.cost">降低成本</h3>
+                    <p data-key="features.costDesc">相比人工评分，成本下降95%，实现真正的降本增效</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>智能优化</h3>
-                    <p>持续学习优化评分模型，适应不同场景需求，提供个性化解决方案</p>
+                    <h3 data-key="features.optimization">智能优化</h3>
+                    <p data-key="features.optimizationDesc">持续学习优化评分模型，适应不同场景需求，提供个性化解决方案</p>
                 </div>
             </div>
         </div>
@@ -948,48 +887,48 @@
     <section id="comparison" class="comparison">
         <div class="container comparison-content">
             <div class="comparison-text">
-                <h2>AI评分 vs 人工评分</h2>
-                <p>基于为知名上市公司近2万名销售，3万次评分的数据验证</p>
-                <p>SmartScore在各个方面都显著优于传统人工评分方式，为企业带来真正的价值提升。</p>
-                <a href="#cta" class="btn" style="margin-top: 30px;">查看案例</a>
+                <h2 data-key="comparison.title">AI评分 vs 人工评分</h2>
+                <p data-key="comparison.subtitle">基于为知名上市公司近2万名销售，3万次评分的数据验证</p>
+                <p data-key="comparison.desc">SmartScore在各个方面都显著优于传统人工评分方式，为企业带来真正的价值提升。</p>
+                <a href="#cta" class="btn" style="margin-top: 30px;" data-key="comparison.cta">查看案例</a>
             </div>
             <div class="comparison-table">
                 <table>
                     <tr>
-                        <th>对比维度</th>
-                        <th>人工打分</th>
-                        <th>AI打分</th>
-                        <th>提升效果</th>
+                        <th data-key="table.dimension">对比维度</th>
+                        <th data-key="table.human">人工打分</th>
+                        <th data-key="table.ai">AI打分</th>
+                        <th data-key="table.improvement">提升效果</th>
                     </tr>
                     <tr>
-                        <td>准确度</td>
-                        <td>主观性强</td>
-                        <td class="ai-score">确保准确和一致性</td>
-                        <td>提升30%</td>
+                        <td data-key="table.accuracy">准确度</td>
+                        <td data-key="table.accuracyHuman">主观性强</td>
+                        <td class="ai-score" data-key="table.accuracyAI">确保准确和一致性</td>
+                        <td data-key="table.accuracyImprove">提升30%</td>
                     </tr>
                     <tr>
-                        <td>处理效率</td>
-                        <td>效率低下</td>
-                        <td class="ai-score">24H×365天不间断</td>
-                        <td>提升100倍</td>
+                        <td data-key="table.efficiency">处理效率</td>
+                        <td data-key="table.efficiencyHuman">效率低下</td>
+                        <td class="ai-score" data-key="table.efficiencyAI">24H×365天不间断</td>
+                        <td data-key="table.efficiencyImprove">提升100倍</td>
                     </tr>
                     <tr>
-                        <td>评分成本</td>
-                        <td>成本高昂</td>
-                        <td class="ai-score">远低于人工成本</td>
-                        <td>下降95%</td>
+                        <td data-key="table.cost">评分成本</td>
+                        <td data-key="table.costHuman">成本高昂</td>
+                        <td class="ai-score" data-key="table.costAI">远低于人工成本</td>
+                        <td data-key="table.costImprove">下降95%</td>
                     </tr>
                     <tr>
-                        <td>组织效率</td>
-                        <td>浪费管理层时间</td>
-                        <td class="ai-score">全自动评分</td>
-                        <td>节约100%管理层时间</td>
+                        <td data-key="table.organization">组织效率</td>
+                        <td data-key="table.organizationHuman">浪费管理层时间</td>
+                        <td class="ai-score" data-key="table.organizationAI">全自动评分</td>
+                        <td data-key="table.organizationImprove">节约100%管理层时间</td>
                     </tr>
                     <tr>
-                        <td>反馈速度</td>
-                        <td>延迟反馈</td>
-                        <td class="ai-score">实时反馈</td>
-                        <td>即时改进</td>
+                        <td data-key="table.feedback">反馈速度</td>
+                        <td data-key="table.feedbackHuman">延迟反馈</td>
+                        <td class="ai-score" data-key="table.feedbackAI">实时反馈</td>
+                        <td data-key="table.feedbackImprove">即时改进</td>
                     </tr>
                 </table>
             </div>
@@ -1001,8 +940,8 @@
         <div class="process-bg"></div>
         <div class="container">
             <div class="section-title">
-                <h2>智能评分四步流程</h2>
-                <p>简单高效，轻松获取专业评分结果</p>
+                <h2 data-key="process.title">智能评分四步流程</h2>
+                <p data-key="process.subtitle">简单高效，轻松获取专业评分结果</p>
             </div>
             <div class="process-steps">
                 <div class="step">
@@ -1010,32 +949,32 @@
                     <div class="step-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>进入系统</h3>
-                    <p>通过小程序或Web平台访问</p>
+                    <h3 data-key="process.step1">进入系统</h3>
+                    <p data-key="process.step1Desc">通过小程序或Web平台访问</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
                     <div class="step-icon">
                         <i class="fas fa-microphone"></i>
                     </div>
-                    <h3>上传内容</h3>
-                    <p>支持语音/视频讲解上传</p>
+                    <h3 data-key="process.step2">上传内容</h3>
+                    <p data-key="process.step2Desc">支持语音/视频讲解上传</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
                     <div class="step-icon">
                         <i class="fas fa-robot"></i>
                     </div>
-                    <h3>AI智能评分</h3>
-                    <p>实时分析并生成评分</p>
+                    <h3 data-key="process.step3">AI智能评分</h3>
+                    <p data-key="process.step3Desc">实时分析并生成评分</p>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
                     <div class="step-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>查看结果</h3>
-                    <p>获取详细评分报告</p>
+                    <h3 data-key="process.step4">查看结果</h3>
+                    <p data-key="process.step4Desc">获取详细评分报告</p>
                 </div>
             </div>
         </div>
@@ -1045,48 +984,48 @@
     <section id="cases" class="use-cases">
         <div class="container">
             <div class="section-title">
-                <h2>应用场景</h2>
-                <p>为您的行业量身定制解决方案，助您高效实现智能评分</p>
+                <h2 data-key="cases.title">应用场景</h2>
+                <p data-key="cases.subtitle">为您的行业量身定制解决方案，助您高效实现智能评分</p>
             </div>
             <div class="cases-grid">
                 <div class="case-card">
-                    <h3><i class="fas fa-chart-line"></i> 销售业务讲解考核</h3>
-                    <p>确保销售团队准确、高效地介绍产品</p>
+                    <h3><i class="fas fa-chart-line"></i> <span data-key="cases.sales">销售业务讲解考核</span></h3>
+                    <p data-key="cases.salesDesc">确保销售团队准确、高效地介绍产品</p>
                     <ul>
-                        <li>模拟销售场景评估表达能力</li>
-                        <li>专业知识应用能力分析</li>
-                        <li>标准化评估提升团队表现</li>
-                        <li>增强销售转化率</li>
+                        <li data-key="cases.sales1">模拟销售场景评估表达能力</li>
+                        <li data-key="cases.sales2">专业知识应用能力分析</li>
+                        <li data-key="cases.sales3">标准化评估提升团队表现</li>
+                        <li data-key="cases.sales4">增强销售转化率</li>
                     </ul>
                 </div>
                 <div class="case-card">
-                    <h3><i class="fas fa-user-graduate"></i> 员工培训考核</h3>
-                    <p>确保员工理解并能应用培训内容</p>
+                    <h3><i class="fas fa-user-graduate"></i> <span data-key="cases.training">员工培训考核</span></h3>
+                    <p data-key="cases.trainingDesc">确保员工理解并能应用培训内容</p>
                     <ul>
-                        <li>在线课程自动评估</li>
-                        <li>模拟任务实时评分</li>
-                        <li>个性化学习路径推荐</li>
-                        <li>确保培训标准一致性</li>
+                        <li data-key="cases.training1">在线课程自动评估</li>
+                        <li data-key="cases.training2">模拟任务实时评分</li>
+                        <li data-key="cases.training3">个性化学习路径推荐</li>
+                        <li data-key="cases.training4">确保培训标准一致性</li>
                     </ul>
                 </div>
                 <div class="case-card">
-                    <h3><i class="fas fa-headset"></i> 客服质量评估</h3>
-                    <p>监控并提升客服团队服务水平</p>
+                    <h3><i class="fas fa-headset"></i> <span data-key="cases.service">客服质量评估</span></h3>
+                    <p data-key="cases.serviceDesc">监控并提升客服团队服务水平</p>
                     <ul>
-                        <li>实时分析客服交流内容</li>
-                        <li>按预设标准评估服务质量</li>
-                        <li>快速识别服务瑕疵</li>
-                        <li>增强客户满意度</li>
+                        <li data-key="cases.service1">实时分析客服交流内容</li>
+                        <li data-key="cases.service2">按预设标准评估服务质量</li>
+                        <li data-key="cases.service3">快速识别服务瑕疵</li>
+                        <li data-key="cases.service4">增强客户满意度</li>
                     </ul>
                 </div>
                 <div class="case-card">
-                    <h3><i class="fas fa-video"></i> 视频面试评估</h3>
-                    <p>高效筛选并评估求职者能力</p>
+                    <h3><i class="fas fa-video"></i> <span data-key="cases.interview">视频面试评估</span></h3>
+                    <p data-key="cases.interviewDesc">高效筛选并评估求职者能力</p>
                     <ul>
-                        <li>分析语言表达与专业知识</li>
-                        <li>评估综合素质与潜力</li>
-                        <li>减轻HR筛选负担</li>
-                        <li>提高招聘效率与准确性</li>
+                        <li data-key="cases.interview1">分析语言表达与专业知识</li>
+                        <li data-key="cases.interview2">评估综合素质与潜力</li>
+                        <li data-key="cases.interview3">减轻HR筛选负担</li>
+                        <li data-key="cases.interview4">提高招聘效率与准确性</li>
                     </ul>
                 </div>
             </div>
@@ -1096,12 +1035,12 @@
     <!-- CTA Section -->
     <section id="cta" class="cta">
         <div class="cta-content">
-            <h2>开启智能评分新时代</h2>
-            <p>立即体验SmartScore，让AI智能评分引擎为您的企业带来效率革命</p>
+            <h2 data-key="cta.title">开启智能评分新时代</h2>
+            <p data-key="cta.subtitle">立即体验SmartScore，让AI智能评分引擎为您的企业带来效率革命</p>
             <div class="cta-buttons">
-                <a href="#" class="btn btn-light">免费试用</a>
-                <a href="#" class="btn">预约演示</a>
-                <a href="#" class="btn btn-outline">联系销售</a>
+                <a href="#" class="btn btn-light" data-key="cta.trial">免费试用</a>
+                <a href="#" class="btn" data-key="cta.demo">预约演示</a>
+                <a href="#" class="btn btn-outline" data-key="cta.contact">联系销售</a>
             </div>
         </div>
     </section>
@@ -1112,7 +1051,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>SmartScore</h3>
-                    <p>新一代AI智能评分引擎，帮助企业实现高效、精准、低成本的自动化评分解决方案。</p>
+                    <p data-key="footer.desc">新一代AI智能评分引擎，帮助企业实现高效、精准、低成本的自动化评分解决方案。</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-weixin"></i></a>
                         <a href="#"><i class="fab fa-weibo"></i></a>
@@ -1121,70 +1060,336 @@
                     </div>
                 </div>
                 <div class="footer-column">
-                    <h3>产品功能</h3>
+                    <h3 data-key="footer.features">产品功能</h3>
                     <ul>
-                        <li><a href="#">智能评分引擎</a></li>
-                        <li><a href="#">语音视频分析</a></li>
-                        <li><a href="#">实时反馈系统</a></li>
-                        <li><a href="#">数据可视化</a></li>
-                        <li><a href="#">定制化解决方案</a></li>
+                        <li><a href="#" data-key="footer.feature1">智能评分引擎</a></li>
+                        <li><a href="#" data-key="footer.feature2">语音视频分析</a></li>
+                        <li><a href="#" data-key="footer.feature3">实时反馈系统</a></li>
+                        <li><a href="#" data-key="footer.feature4">数据可视化</a></li>
+                        <li><a href="#" data-key="footer.feature5">定制化解决方案</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>应用场景</h3>
+                    <h3 data-key="footer.scenarios">应用场景</h3>
                     <ul>
-                        <li><a href="#">销售业务讲解考核</a></li>
-                        <li><a href="#">员工培训考核</a></li>
-                        <li><a href="#">客服质量监控</a></li>
-                        <li><a href="#">面试评估</a></li>
-                        <li><a href="#">教育培训评估</a></li>
+                        <li><a href="#" data-key="footer.scenario1">销售业务讲解考核</a></li>
+                        <li><a href="#" data-key="footer.scenario2">员工培训考核</a></li>
+                        <li><a href="#" data-key="footer.scenario3">客服质量监控</a></li>
+                        <li><a href="#" data-key="footer.scenario4">面试评估</a></li>
+                        <li><a href="#" data-key="footer.scenario5">教育培训评估</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>联系我们</h3>
+                    <h3 data-key="footer.contact">联系我们</h3>
                     <ul class="contact-info">
-                        <li><i class="fas fa-phone"></i> <span>136-615-06899</span></li>
-                        <li><i class="fas fa-envelope"></i> <span>yiheng1900@gmail.com</span></li>
-                        <li><i class="fas fa-map-marker-alt"></i> <span>上海市淮海中路333号</span></li>
-                        <li><i class="fas fa-clock"></i> <span>周一至周日 9:00-18:00</span></li>
+                        <li><i class="fas fa-phone"></i> <span>400-888-8888</span></li>
+                        <li><i class="fas fa-envelope"></i> <span>contact@smartscore.com</span></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span data-key="footer.address">北京市海淀区科技园区88号</span></li>
+                        <li><i class="fas fa-clock"></i> <span data-key="footer.hours">周一至周五 9:00-18:00</span></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 SmartScore AI智能评分引擎. 保留所有权利。</p>
+                <p>&copy; 2023 SmartScore AI智能评分引擎. <span data-key="footer.rights">保留所有权利</span>。</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // 创建动态粒子效果
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
+        // 翻译字典
+        const translations = {
+            zh: {
+                // 导航
+                "nav.features": "核心优势",
+                "nav.comparison": "AI vs 人工",
+                "nav.process": "工作流程",
+                "nav.cases": "应用场景",
+                "nav.contact": "联系我们",
+                "nav.trial": "免费试用",
                 
-                // 随机粒子大小
-                const size = Math.random() * 120 + 20;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
+                // 首页
+                "hero.title": "新一代AI智能评分引擎",
+                "hero.subtitle": "基于机器学习与NLP技术，提供超越人工的精准评分解决方案",
+                "hero.try": "立即体验",
+                "hero.cases": "应用场景",
                 
-                // 随机位置
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
-                particle.style.left = `${posX}%`;
-                particle.style.top = `${posY}%`;
+                // 核心优势
+                "features.title": "为什么选择 SmartScore?",
+                "features.subtitle": "基于AI和机器学习技术，提供超越人工的评分解决方案",
+                "features.efficiency": "高效省时",
+                "features.efficiencyDesc": "24小时不间断服务，处理速度是人工的100倍以上，大幅提升工作效率",
+                "features.accuracy": "精准一致",
+                "features.accuracyDesc": "采用机器学习与NLP技术，消除人为偏差，评分准确度提升30%",
+                "features.cost": "降低成本",
+                "features.costDesc": "相比人工评分，成本下降95%，实现真正的降本增效",
+                "features.optimization": "智能优化",
+                "features.optimizationDesc": "持续学习优化评分模型，适应不同场景需求，提供个性化解决方案",
                 
-                // 随机动画延迟
-                const delay = Math.random() * 15;
-                particle.style.animationDelay = `${delay}s`;
+                // 对比
+                "comparison.title": "AI评分 vs 人工评分",
+                "comparison.subtitle": "基于为知名上市公司近2万名销售，3万次评分的数据验证",
+                "comparison.desc": "SmartScore在各个方面都显著优于传统人工评分方式，为企业带来真正的价值提升。",
+                "comparison.cta": "查看案例",
                 
-                particlesContainer.appendChild(particle);
+                // 表格
+                "table.dimension": "对比维度",
+                "table.human": "人工打分",
+                "table.ai": "AI打分",
+                "table.improvement": "提升效果",
+                "table.accuracy": "准确度",
+                "table.accuracyHuman": "主观性强",
+                "table.accuracyAI": "确保准确和一致性",
+                "table.accuracyImprove": "提升30%",
+                "table.efficiency": "处理效率",
+                "table.efficiencyHuman": "效率低下",
+                "table.efficiencyAI": "24H×365天不间断",
+                "table.efficiencyImprove": "提升100倍",
+                "table.cost": "评分成本",
+                "table.costHuman": "成本高昂",
+                "table.costAI": "远低于人工成本",
+                "table.costImprove": "下降95%",
+                "table.organization": "组织效率",
+                "table.organizationHuman": "浪费管理层时间",
+                "table.organizationAI": "全自动评分",
+                "table.organizationImprove": "节约100%管理层时间",
+                "table.feedback": "反馈速度",
+                "table.feedbackHuman": "延迟反馈",
+                "table.feedbackAI": "实时反馈",
+                "table.feedbackImprove": "即时改进",
+                
+                // 流程
+                "process.title": "智能评分四步流程",
+                "process.subtitle": "简单高效，轻松获取专业评分结果",
+                "process.step1": "进入系统",
+                "process.step1Desc": "通过小程序或Web平台访问",
+                "process.step2": "上传内容",
+                "process.step2Desc": "支持语音/视频讲解上传",
+                "process.step3": "AI智能评分",
+                "process.step3Desc": "实时分析并生成评分",
+                "process.step4": "查看结果",
+                "process.step4Desc": "获取详细评分报告",
+                
+                // 应用场景
+                "cases.title": "应用场景",
+                "cases.subtitle": "为您的行业量身定制解决方案，助您高效实现智能评分",
+                "cases.sales": "销售业务讲解考核",
+                "cases.salesDesc": "确保销售团队准确、高效地介绍产品",
+                "cases.sales1": "模拟销售场景评估表达能力",
+                "cases.sales2": "专业知识应用能力分析",
+                "cases.sales3": "标准化评估提升团队表现",
+                "cases.sales4": "增强销售转化率",
+                "cases.training": "员工培训考核",
+                "cases.trainingDesc": "确保员工理解并能应用培训内容",
+                "cases.training1": "在线课程自动评估",
+                "cases.training2": "模拟任务实时评分",
+                "cases.training3": "个性化学习路径推荐",
+                "cases.training4": "确保培训标准一致性",
+                "cases.service": "客服质量评估",
+                "cases.serviceDesc": "监控并提升客服团队服务水平",
+                "cases.service1": "实时分析客服交流内容",
+                "cases.service2": "按预设标准评估服务质量",
+                "cases.service3": "快速识别服务瑕疵",
+                "cases.service4": "增强客户满意度",
+                "cases.interview": "视频面试评估",
+                "cases.interviewDesc": "高效筛选并评估求职者能力",
+                "cases.interview1": "分析语言表达与专业知识",
+                "cases.interview2": "评估综合素质与潜力",
+                "cases.interview3": "减轻HR筛选负担",
+                "cases.interview4": "提高招聘效率与准确性",
+                
+                // CTA
+                "cta.title": "开启智能评分新时代",
+                "cta.subtitle": "立即体验SmartScore，让AI智能评分引擎为您的企业带来效率革命",
+                "cta.trial": "免费试用",
+                "cta.demo": "预约演示",
+                "cta.contact": "联系销售",
+                
+                // 页脚
+                "footer.desc": "新一代AI智能评分引擎，帮助企业实现高效、精准、低成本的自动化评分解决方案。",
+                "footer.features": "产品功能",
+                "footer.feature1": "智能评分引擎",
+                "footer.feature2": "语音视频分析",
+                "footer.feature3": "实时反馈系统",
+                "footer.feature4": "数据可视化",
+                "footer.feature5": "定制化解决方案",
+                "footer.scenarios": "应用场景",
+                "footer.scenario1": "销售业务讲解考核",
+                "footer.scenario2": "员工培训考核",
+                "footer.scenario3": "客服质量监控",
+                "footer.scenario4": "面试评估",
+                "footer.scenario5": "教育培训评估",
+                "footer.contact": "联系我们",
+                "footer.address": "北京市海淀区科技园区88号",
+                "footer.hours": "周一至周五 9:00-18:00",
+                "footer.rights": "保留所有权利"
+            },
+            en: {
+                // 导航
+                "nav.features": "Key Advantages",
+                "nav.comparison": "AI vs Manual",
+                "nav.process": "Workflow",
+                "nav.cases": "Use Cases",
+                "nav.contact": "Contact Us",
+                "nav.trial": "Free Trial",
+                
+                // 首页
+                "hero.title": "Next-Gen AI Scoring Engine",
+                "hero.subtitle": "Providing precise scoring solutions beyond human capabilities with ML and NLP technology",
+                "hero.try": "Try Now",
+                "hero.cases": "Use Cases",
+                
+                // 核心优势
+                "features.title": "Why Choose SmartScore?",
+                "features.subtitle": "AI-powered scoring solutions that outperform manual methods",
+                "features.efficiency": "High Efficiency",
+                "features.efficiencyDesc": "24/7 service, 100x faster than manual scoring, significantly improving productivity",
+                "features.accuracy": "Precision & Consistency",
+                "features.accuracyDesc": "ML and NLP technology eliminate human bias, improving accuracy by 30%",
+                "features.cost": "Cost Reduction",
+                "features.costDesc": "95% lower cost compared to manual scoring, achieving true cost efficiency",
+                "features.optimization": "Intelligent Optimization",
+                "features.optimizationDesc": "Continuously learning and optimizing scoring models for personalized solutions",
+                
+                // 对比
+                "comparison.title": "AI Scoring vs Manual Scoring",
+                "comparison.subtitle": "Validated with data from 20,000 salespeople at leading listed companies",
+                "comparison.desc": "SmartScore significantly outperforms traditional manual scoring in every aspect.",
+                "comparison.cta": "View Case Studies",
+                
+                // 表格
+                "table.dimension": "Comparison Dimension",
+                "table.human": "Manual Scoring",
+                "table.ai": "AI Scoring",
+                "table.improvement": "Improvement",
+                "table.accuracy": "Accuracy",
+                "table.accuracyHuman": "Highly subjective",
+                "table.accuracyAI": "Ensures accuracy and consistency",
+                "table.accuracyImprove": "+30%",
+                "table.efficiency": "Processing Efficiency",
+                "table.efficiencyHuman": "Inefficient",
+                "table.efficiencyAI": "24/7 non-stop operation",
+                "table.efficiencyImprove": "100x faster",
+                "table.cost": "Scoring Cost",
+                "table.costHuman": "Costly",
+                "table.costAI": "Much lower than manual",
+                "table.costImprove": "-95%",
+                "table.organization": "Organizational Efficiency",
+                "table.organizationHuman": "Wastes management time",
+                "table.organizationAI": "Fully automated scoring",
+                "table.organizationImprove": "100% management time saved",
+                "table.feedback": "Feedback Speed",
+                "table.feedbackHuman": "Delayed feedback",
+                "table.feedbackAI": "Real-time feedback",
+                "table.feedbackImprove": "Immediate improvement",
+                
+                // 流程
+                "process.title": "4-Step Intelligent Scoring Process",
+                "process.subtitle": "Simple and efficient way to get professional scoring results",
+                "process.step1": "Access System",
+                "process.step1Desc": "Via mini-program or web platform",
+                "process.step2": "Upload Content",
+                "process.step2Desc": "Support audio/video explanations",
+                "process.step3": "AI Smart Scoring",
+                "process.step3Desc": "Real-time analysis and scoring",
+                "process.step4": "View Results",
+                "process.step4Desc": "Get detailed scoring report",
+                
+                // 应用场景
+                "cases.title": "Application Scenarios",
+                "cases.subtitle": "Tailored solutions for your industry to achieve intelligent scoring efficiently",
+                "cases.sales": "Sales Pitch Assessment",
+                "cases.salesDesc": "Ensure sales teams present products accurately and efficiently",
+                "cases.sales1": "Simulate sales scenarios to evaluate communication",
+                "cases.sales2": "Analyze professional knowledge application",
+                "cases.sales3": "Standardized evaluation to enhance team performance",
+                "cases.sales4": "Increase sales conversion rate",
+                "cases.training": "Employee Training Assessment",
+                "cases.trainingDesc": "Ensure employees understand and apply training content",
+                "cases.training1": "Automated assessment of online courses",
+                "cases.training2": "Real-time scoring for simulation tasks",
+                "cases.training3": "Personalized learning path recommendations",
+                "cases.training4": "Ensure consistent training standards",
+                "cases.service": "Customer Service Evaluation",
+                "cases.serviceDesc": "Monitor and improve service team performance",
+                "cases.service1": "Real-time analysis of customer interactions",
+                "cases.service2": "Evaluate service quality against standards",
+                "cases.service3": "Quickly identify service flaws",
+                "cases.service4": "Enhance customer satisfaction",
+                "cases.interview": "Video Interview Assessment",
+                "cases.interviewDesc": "Efficiently screen and evaluate candidate abilities",
+                "cases.interview1": "Analyze language expression and expertise",
+                "cases.interview2": "Assess comprehensive qualities and potential",
+                "cases.interview3": "Reduce HR screening workload",
+                "cases.interview4": "Improve hiring efficiency and accuracy",
+                
+                // CTA
+                "cta.title": "Start a New Era of Intelligent Scoring",
+                "cta.subtitle": "Experience SmartScore today and revolutionize your business efficiency with AI scoring",
+                "cta.trial": "Free Trial",
+                "cta.demo": "Schedule Demo",
+                "cta.contact": "Contact Sales",
+                
+                // 页脚
+                "footer.desc": "Next-gen AI scoring engine helping businesses achieve efficient, precise, low-cost automated scoring solutions.",
+                "footer.features": "Features",
+                "footer.feature1": "Intelligent Scoring Engine",
+                "footer.feature2": "Audio/Video Analysis",
+                "footer.feature3": "Real-time Feedback System",
+                "footer.feature4": "Data Visualization",
+                "footer.feature5": "Customized Solutions",
+                "footer.scenarios": "Use Cases",
+                "footer.scenario1": "Sales Pitch Assessment",
+                "footer.scenario2": "Employee Training Assessment",
+                "footer.scenario3": "Customer Service Monitoring",
+                "footer.scenario4": "Interview Evaluation",
+                "footer.scenario5": "Education & Training Evaluation",
+                "footer.contact": "Contact Us",
+                "footer.address": "No.88, Tech Park, Haidian District, Beijing",
+                "footer.hours": "Mon-Fri 9:00-18:00",
+                "footer.rights": "All rights reserved"
             }
+        };
+
+        // 当前语言
+        let currentLang = 'zh';
+
+        // 切换语言函数
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // 更新所有带data-key属性的元素
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.value = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            // 更新语言按钮状态
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // 更新HTML lang属性
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
         }
-        
+
+        // 初始化语言切换事件
+        document.querySelectorAll('.language-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                switchLanguage(lang);
+            });
+        });
+
         // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1207,18 +1412,8 @@
             }
         });
 
-        // 卡片悬停效果增强
-        const cards = document.querySelectorAll('.feature-card, .step, .case-card');
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = this.style.transform;
-            });
-        });
-
         // 页面加载动画
         document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-            
             const elements = document.querySelectorAll('.feature-card, .step, .case-card');
             elements.forEach((el, index) => {
                 setTimeout(() => {
@@ -1232,6 +1427,9 @@
                     }, 100);
                 }, index * 100);
             });
+            
+            // 初始化英文翻译
+            switchLanguage('zh');
         });
     </script>
 </body>
