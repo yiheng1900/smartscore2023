@@ -800,7 +800,7 @@
             transition: all 0.3s ease;
         }
         
-        /* 移动导航菜单 */
+        /* 移动导航菜单 -- UI优化 */
         .mobile-nav {
             position: fixed;
             top: 0;
@@ -813,6 +813,8 @@
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
             transition: right 0.3s ease;
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
         }
         
         .mobile-nav.active {
@@ -821,20 +823,25 @@
         
         .mobile-nav ul {
             list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
         
         .mobile-nav ul li {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
         .mobile-nav ul li a {
             display: block;
-            padding: 12px 15px;
+            padding: 14px 20px;
             color: var(--dark);
             text-decoration: none;
             font-weight: 500;
-            border-radius: 6px;
+            border-radius: 8px;
             transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
         
         .mobile-nav ul li a:hover {
@@ -842,8 +849,19 @@
             color: var(--primary);
         }
         
+        .mobile-nav-footer {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .mobile-nav ul li.mobile-nav-footer {
+            margin-bottom: 0;
+        }
+        
         .mobile-nav .language-switcher {
-            margin: 20px 0;
+            margin: 0;
+            margin-left: 0;
             justify-content: center;
         }
         
@@ -851,6 +869,7 @@
             display: block;
             text-align: center;
             margin-top: 20px;
+            width: 100%;
         }
         
         /* 响应式设计 */
@@ -1015,13 +1034,12 @@
             <li><a href="#process" data-key="nav.process">工作流程</a></li>
             <li><a href="#cases" data-key="nav.cases">应用场景</a></li>
             <li><a href="#contact" data-key="nav.contact">联系我们</a></li>
-            <li>
+            
+            <li class="mobile-nav-footer">
                 <div class="language-switcher">
                     <button class="language-btn active" data-lang="zh">简体中文</button>
                     <button class="language-btn" data-lang="en">English</button>
                 </div>
-            </li>
-            <li>
                 <a href="#cta" class="btn mobile-btn" data-key="nav.trial">免费试用</a>
             </li>
         </ul>
