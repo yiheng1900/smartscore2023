@@ -1688,9 +1688,10 @@
                         behavior: 'smooth'
                     });
                     
-                    // 如果是移动菜单，关闭菜单
+                    // 如果是移动菜单，关闭菜单并恢复页面滚动
                     mobileNav.classList.remove('active');
                     hamburger.classList.remove('active');
+                    document.body.style.overflow = ''; // <-- 这是关键的修复
                 }
             });
         });
